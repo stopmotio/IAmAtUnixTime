@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I am at UNIX timestamp</title>
+<style>
+  body {
+    padding:0;
+    margin:0;
+  }
+  .header {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    top:0;
+  }
+  
+  .footerwrap {
+    position:fixed;
+    bottom:0;
+    width:100vw;
+    z-index:2;
+  }
+  
+  .footer {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    width:90vw;
+  }
+  
+  .upper-middle-socioeconomically {
+    position:fixed;
+    bottom:0;
+    left:0;
+    height:80vh;
+  }
+  .txt-container {
+    position:fixed;
+    display:block;
+    margin-top:10vh;
+    width:100vw;
+  }
+  #clk {
+    font-family:monospace;
+    text-align:center;
+    display:block;
+    font-size:10vw;
+  }
+  
+  #debug {
+    color:white;
+  }
+</style>
+</head>
+
+<body>
+<img alt="I AM AT" src="I AM AT.png" class="header">
+<div class="txt-container">
+  <p id="clk"></p>
+</div>
+<p id="debug">13371337l33t</p>
+<img alt="tom scott" src="tom.png" class="upper-middle-socioeconomically">
+<div class="footerwrap">
+  <img alt="THE CURRENT UNIX TIMESTAMP" src="UNIX.png" class="footer">
+</div>
+
+<script>
+  //I AM AT THE PART WHERE I DECLARE VARIABLES
+  var disp = document.getElementById('clk');
+  var fpscount = 0;
+  var fps = 1337;
+  
+  function update() {
+    var time = new Date();
+    var unix = time.getTime();
+    
+    disp.innerHTML = unix;
+    fpscount = fpscount + 1;
+    requestAnimationFrame(update);
+  }
+  
+  requestAnimationFrame(update);
+  
+  function completeFPSloop() {
+    fps = fpscount;
+    fpscount = 0;
+    document.getElementById('debug').innerHTML = fps + " FPS via requestAnimationFrame";
+  }
+  setInterval(completeFPSloop,1000);
+  
+  function showDebug() {
+    //Diagnostic only. Shows refresh rate.
+    document.getElementById('debug').style.color = "black";
+  }
+</script>
+</body>
+</html>
